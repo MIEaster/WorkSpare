@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p :class="str">111</p>
+    <p class="init" :class="str">222</p>
+    <hr>
+    <h2>对象表示法</h2>
+    <p :class="{active:isactive}">333</p>
+    <p :class="{active:isactive,c:isx}">444</p>
+    <p :class="styleObject">555</p>
+    <hr/>
+    <h2>对象表示法</h2>
+    <p :class="[a,b]"></p>
+    <p :class="[isactive==true?c:'',d]">777</p>
+    <p :class="[{e:isactive},f]">888</p>
+//------------------------------
+    <p v-html="aa"></p>
+    <p v-html="bb"></p>
+    <p v-html="cc"></p>
+  </div>
+  <script src="../lib/vue.js"></script>
+  <script>
+    let vm = new Vue({
+      el:'#app',
+      data:{
+        str:{
+          
+        },
+        h:'hellos',
+        aa:'abc',
+        bb:'<h2>def</h2>',
+        cc:'123',
+      },
+    })
+  </script>
+</body>
+</html>

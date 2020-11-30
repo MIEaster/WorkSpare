@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="module">
+      //如果这样写，xxx代表的就是03_2文件中默认的导出的那个函数
+      /*   import xxx from './03_2.js'
+
+            console.log(xxx(1, 2)) */
+
+      //下面只是导入了03_2显式导出的成员
+      /*   import { o2, i2 } from './03_2.js'
+
+            console.log(o2.age, i2) */
+
+      import { default as add, o2, i2 } from './03_2.js'
+
+      console.log(add(i2, o2.age))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+    function add(m,n){
+      return m+n
+    }
+
+    function gaojie (m){
+      console.log(m)
+    }
+
+    function dijie(){
+      console.log('dijie')
+      return 100
+    }
+
+    function p(){
+      return 100
+    }
+    let result = p()
+    console.log(result)
+
+    function p2(){
+      return function(){
+        return 100
+      }
+      }
+    let result2= p2()()
+    console.log(result2)
+
+    let fun = p2()
+    let result3 = fun()
+*/
+    // function add(m,n){
+    //   console.log(arguments.length)
+    //   return m+n
+    // }
+    // add()
+    // add(1,2)
+    // add(1,2,3)
+
+    // function add(){
+    //   console.log(typeof arguments)
+    //   let result = 0
+    //   for(let i=0;i<arguments.length;i++){
+    //     result += arguments[i]
+    //   }
+    //   return result
+    // }
+
+    // add(1,2)
+    // add(1,2,3)
+    // add(1,2,3,4)
+/*
+    function f (m,n){
+      n= n || 1
+    }
+
+    function add (m,x = 1 , y = 2){
+      return m + x + y
+    }
+    console.log(add())
+    console.log(add(100))
+    console.log(add(100,200))
+    console.log(add(100,200,300))
+    console.log(add(100,200,300,400))
+
+    function add2 (x = 1 , y = x){
+      return x + y
+    }
+    console.log(add2(100))
+
+    function add3 (
+      x,
+      y = (function(){
+        console.log('xxx')
+        return 1000
+      })()
+    ){
+      return x + y
+    }
+
+    console.log(add3(100))[({},{},{},{},{})]
+    function processData(data,pagenum = 1,pagesize = 2){}
+*/
+    // function add(m,...aaa){
+    //   let result = m
+    //   for (let item of aaa){
+    //     result += item
+    //   }
+    //   return result
+    // }
+    // console.log(add(199,200,309,4))
+
+    // let f =()=> console.log('hello')
+    // f()
+
+    // let f2 =() => 100
+
+    // function f(){
+    //   var a  = 100
+    //   console.log('在函数f内部可以：a')
+    // }
+    // f()
+
+    // console.log(a)
+//-------------------------------------------------------
+    // let userService =(function(){
+    //   let cached = new Map()
+    //   return{
+    //     getById:function(id){
+    //       if (cached.has(id)){
+    //         console.log('查快速的东西')
+    //         return cached.get(id)
+    //       }else{
+    //         console.log('查慢速的东西')
+    //         let value = Math.random()
+    //         cached.set(id,value)
+    //         return value
+    //       }
+    //     }
+    //   }
+    // })()
+
+    // let result = userService .getById(100)
+    // console.log('1：',result)
+
+    // let result2 = userService.get(100)
+    // console.log('2:',result2)
+
+    // let result3 = userService.getById(300)
+    // console.log('1:',result3)
+    
+//---------------------------------------------------------
+      // let o = {
+      //   age:'18'
+      // }
+      // o.age =-100
+      // console.log(o.age)
+
+      // let getterSetter = (function(){
+      //   let age = 0
+
+      //   return{
+      //     setAge:function(value){
+      //       if(value< 0 || value>200){
+      //         console.log('超出范围')
+      //         age = 0
+      //       }else{
+      //         age = value
+      //       }
+      //     },
+      //     getAge:function(){
+      //       return age
+      //     },
+      //   }
+      // })()
+
+      // getterSetter.setAge(10)
+      // console.log(getterSetter.getAge())
+
+      // // getterSetter.setAge(-10)
+      // // console.log(getterSetter,getAge())
+//------------------------------------------------
+
+        // function getId(){
+        //   let i=0
+        //   return i++
+        // }
+        // console.log(getId())
+        // console.log(getId())
+        // console.log(getId())
+
+        // let i=0
+        // function getId2(){
+        //   i++
+        //   return i
+        // }
+
+        // console.log(getId2())
+        // console.log(getId2())
+        // console.log(getId2())
+
+        // let generator =(function(){
+        //   let i=10000
+        //   return function(){
+        //     i++
+        //     return i
+        //   }
+        // })()
+
+        // console.log(generator())
+        // console.log(generator())
+        // console.log(generator())
+        function Person(){}
+        let p1 = new Person()
+        console.log()
+
+
+  </script>
+</body>
+</html>

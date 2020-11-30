@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //第一方案
+      // function getId() {
+      //   let i = 0
+      //   return i++
+      // }
+      // console.log(getId())
+      // console.log(getId())
+      // console.log(getId())
+      //第二个方案：做到了要求
+      //缺点就是产生过多的共享的变量
+      let i = 0
+      function getId2() {
+        i++
+        return i
+      }
+      // console.log(getId2())
+      // console.log(getId2())
+      // console.log(getId2())
+      i = 10000
+      // console.log(getId2())
+      //下面这行代码演示的是getId2这个函数也可能被覆盖的
+      // var getId2 = 'abc'
+      //getId2()
+
+      //方案3：
+      let generator = (function () {
+        let i = 10000
+        return function () {
+          i++
+          return i
+        }
+      })()
+      console.log(generator())
+      console.log(generator())
+      console.log(generator())
+    </script>
+  </body>
+</html>

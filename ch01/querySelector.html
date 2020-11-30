@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="button" value="scrollIntoView" id="btnScroll" />
+    <p id="a" class="box bold myclass">pppp</p>
+    <p id="b" class="box" aaa="100" data-age="18" data-name="hlm">qqq22</p>
+
+    <div style="height: 300px"></div>
+    <span id="abc">这是span</span>
+    <script>
+      //querySelector支持很多种选择器，类似于jQUery的功能
+      //只选择符合条件的第一个
+      var result = document.querySelector('p')
+      // console.log(result)
+      // console.log(result.length)
+
+      //选择所有符合条件的元素，是一个数组
+      var result2 = document.querySelectorAll('p')
+      // console.log(result2)
+      //console.log(result2.length)
+
+      //得到所有class为box的元素
+      var result3 = document.getElementsByClassName('box')
+      //console.log(result3)
+
+      var result4 = document.getElementById('a')
+      result4.classList.forEach(function (value, key, ele) {
+        console.log(value)
+      })
+
+      result4.classList.remove('myclass')
+
+      result4.classList.add('myclass2')
+      result4.classList.add('myclass3')
+      result4.classList.add('box')
+
+      var result5 = document.getElementById('b')
+
+      var x = result5.dataset.age
+      var y = result5.dataset.name
+      console.log(x)
+      console.log(y)
+
+      var btn = document.getElementById('btnScroll')
+      btn.addEventListener('click', function () {
+        alert('xx')
+        var abcSpan = document.getElementById('abc')
+        abcSpan.scrollIntoView()
+      })
+    </script>
+  </body>
+</html>

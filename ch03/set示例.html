@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //创建set集合
+      let data = new Set()
+
+      data.add(100)
+      data.add(200)
+      data.add(100)
+      for (let item of data) {
+        //输出100,200，重复项不会添加到set集合中
+        //console.log(item)
+      }
+
+      let exist = data.has(200)
+      //console.log(exist) //true
+
+      let exist2 = data.has(300)
+      //console.log(exist2) //false
+
+      //删除数据
+      // data.delete(100)
+      let exist3 = data.has(100)
+      //console.log(exist3) //false
+
+      //set集合的键就是其值
+      for (let k of data.keys()) {
+        console.log(k)
+      }
+
+      for (let v of data.values()) {
+        console.log(v)
+      }
+
+      for (let entry of data.entries()) {
+        //索引0取得键的值，1是值得数据
+        console.log(entry[0], entry[1])
+      }
+    </script>
+  </body>
+</html>

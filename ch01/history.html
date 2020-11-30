@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      div {
+        height: 300px;
+        width: 300px;
+        border: 1px solid rebeccapurple;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 利用hash值改变，页面不卸载，但浏览器历史记录改变的特性 -->
+    <a href="#abc">调到锚点abc处</a>
+    <a href="#def">调到锚点def处</a>
+
+    <div class=""></div>
+    <div></div>
+    <div></div>
+    <div id="abc">abcccccxcx</div>
+
+    <div></div>
+    <div></div>
+
+    <p id="def">asd;lfkjasl;dfkj;alskjdf;laskdfjasdfasd</p>
+    <script>
+      /* es6对history的扩展主要是添加了这个popstate事件以及pushState，replaceState这2个方法
+      
+      利用这个特点与hjax类似，有一种技术叫pjax来做单页路由
+
+      所以做单页路由有2种方法，hash方法，history方法
+       */
+      addEventListener('popstate', function (e) {
+        console.log('pop state 事件发生了---')
+        console.log(e)
+      })
+    </script>
+  </body>
+</html>

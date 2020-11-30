@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>编号</th>
+          <th>姓名</th>
+          <th>年龄<input type="button" id="sortAge" value="=" /></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script>
+      let up = '↑'
+      let down = '↓'
+      let data = [
+        { name: 23, age: 19, id: '005' },
+        { name: 12, age: 16, id: '003' },
+        { name: 33, age: 18, id: '002' },
+      ]
+
+      /* let result = data.sort(function (a, b) {
+        return a.age - b.age
+      })
+ */
+      //console.log(result)
+
+      function sortFactory(name) {
+        return function (a, b) {
+          return a[name] - b[name]
+        }
+      }
+      //let result2 = data.sort(sortFactory('age'))
+      // console.log(result2)
+
+      /*  let result3 = data.sort(sortFactory('name'))
+      console.log(result3) */
+
+      //第二个作业
+
+      //填充表格数据
+      function fillTable(source) {
+        let tbody = document.querySelector('tbody')
+        tbody.innerHTML = ''
+
+        let result = ''
+        for (let item of source) {
+          let tr = `<tr>
+            <td>${item.id}
+            </td><td>${item.name}</td>
+              <td>${item.age}</td></tr>`
+          result += tr
+        }
+        tbody.innerHTML = result
+      }
+
+      fillTable(data)
+
+      let sortbtn = document.querySelector('#sortAge')
+
+      sortbtn.addEventListener('click', function () {
+        if (this.value == '=') {
+          this.value = down
+        } else if (this.value == down) {
+          this.value = up
+          let sortedData = data.sort(function (a, b) {
+            return a.age - b.age
+          })
+
+          fillTable(sortedData)
+        } else {
+          this.value = down
+          let sortedData = data.sort(function (a, b) {
+            return b.age - a.age
+          })
+
+          fillTable(sortedData)
+        }
+      })
+    </script>
+  </body>
+</html>

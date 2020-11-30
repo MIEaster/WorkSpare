@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Person {
+        work() {
+          console.log('父类的方法')
+        }
+
+        static Xxx() {
+          console.log('父类的静态方法xxx')
+        }
+      }
+
+      class Student extends Person {
+        constructor() {
+          super()
+        }
+        myWork() {
+          super.work() // super就是指代父对象，this指的本对象
+          console.log('我在工作')
+        }
+      }
+
+      let s1 = new Student()
+      console.log(s1 instanceof Student)
+      console.log(s1 instanceof Person)
+
+      s1.myWork()
+
+      Student.Xxx()
+    </script>
+  </body>
+</html>

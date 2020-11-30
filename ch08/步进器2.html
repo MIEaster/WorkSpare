@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>     
+  <div id="app">
+    <input type="button" value="-" id="pre" />
+    <p>0</p>
+    <input type="button" value="+" id="next" />
+  </div>
+  <script src="../js/jquery.js"></script>
+  <script>
+    $(function () {
+      $('#pre').click(function () {
+        if ($('p').text() <= 1) {
+          $('p').text(0)
+        } else {
+          $('p').text(parseInt($('p').text()) - 1)
+        }
+      })
+
+      $('#next').click(function () {
+        if ($('p').text() < 100) {
+          $('p').text(parseInt($('p').text()) + 1)
+        } else {
+          $('p').text(100)
+        }
+      })
+    })
+  </script>
+</body>
+</html>

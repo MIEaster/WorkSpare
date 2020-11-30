@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="start" name="start" />
+    <input type="text" id="end" name="end" />
+    <input
+      type="button"
+      id="btnSearch"
+      name="btnSearch"
+      value="按价格区间搜索"
+    />
+
+    <input type="text" id="brandName" name="brandName" />
+    <input type="button" id="btnBrand" name="btnBrand" value="按名称搜索" />
+    <table id="tbl-data">
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>名称</th>
+          <th>价格</th>
+        </tr>
+      </thead>
+
+      <tbody></tbody>
+    </table>
+
+    <script>
+      let data = [
+        { id: 1, name: 'mate40', price: 5600 },
+        { id: 2, name: 'apple', price: 7600 },
+        { id: 3, name: 'xiaomi', price: 2600 },
+      ]
+      //获取表格里面的tbody对象
+      const tbody = document.querySelector('#tbl-data tbody')
+
+      function initData(mydata) {
+        //清空表格中的数据
+        tbody.innerHTML = ''
+        for (let item of mydata) {
+          let tr = document.createElement('tr')
+          tr.innerHTML =
+            '<td>' +
+            item.id +
+            '</td><td>' +
+            item.name +
+            '</td><td>' +
+            item.price +
+            '</td>'
+          tbody.appendChild(tr)
+        }
+      }
+
+      initData(data)
+
+      //*********名称精确搜索*********************
+      const btnBrand = document.querySelector('#btnBrand')
+      const txtbrand = document.querySelector('#brandName')
+      btnBrand.addEventListener('click', function () {
+        data.some(function (item) {
+          if (item.name === txtbrand.value) {
+            let newData = [] //这个数组永远只有一个
+            newData.push(item)
+            initData(newData)
+            return true
+          }
+        })
+      })
+
+      //*********价格区间搜索*********************
+      const btnSearch = document.querySelector('#btnSearch')
+      const start = document.querySelector('#start')
+      const end = document.querySelector('#end')
+
+      btnSearch.addEventListener('click', function () {
+        //方法一
+        /*  let newData = []
+        data.forEach(function (item) {
+          if (item.price >= start.value && item.price <= end.value) {
+            newData.unshift(item)
+          }
+        })
+
+        initData(newData) */
+
+        let newData = data.filter(function (item) {
+          return item.price >= start.value && item.price <= end.value
+        })
+        initData(newData)
+      })
+    </script>
+  </body>
+</html>

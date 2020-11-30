@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var o = {}
+      o.a = '100'
+      o.a = true
+
+      console.log(o.a)
+      //像上面的情况就会产生覆盖的问题，因为属性名是一样的
+
+      function f1(gender) {
+        if (gender == 'male') {
+        } else if (gender == 'female') {
+        }
+      }
+
+      f1('males')
+      //可以改成下面的这样，直接点出来，不会出错，即使错了也会在开发阶段发现
+      // f1(p.males)
+
+      //推出一个Symbol类型，它是唯一的
+
+      var s1 = Symbol('miaoshu')
+      var s2 = Symbol('miaoshu')
+
+      console.log(s1)
+      console.log(s1 === s2)
+
+      o[s1] = 'abc'
+      o[s2] = 'def'
+      console.log(o[s1])
+      console.log(o[s2])
+
+      //假设我们不能或不知道s1这个变量，我们如何获取对象o的s1属性的值呢？
+      //如果我们丢失了变量s1，s2的访问，那么o对象的这2个属性就永远访问不到了。
+
+      var s3 = Symbol.for('全局注册的一个符号')
+      o[s3] = 200
+      console.log(o[s3])
+      //假定s3变量我们无法访问，那么可以这样
+      var s4 = Symbol.for('全局注册的一个符号')
+      console.log(o[s4])
+      //Symbol.for的原理是这样：第一次依据描述是全局注册一个
+      //第二次以及后来的调用，依据描述在全局注册表里面查找，找到就返回
+
+      //keyFor方法返回的是符号的描述
+      var result = Symbol.keyFor(s3)
+      console.log(result)
+
+      var gender = {
+        male: Symbol.for('male'),
+        female: Symbol.for('female'),
+      }
+
+      function f2(g) {
+        if (g == gender.male) {
+          console.log('这是男生')
+        }
+      }
+
+      f2(gender.male)
+    </script>
+  </body>
+</html>

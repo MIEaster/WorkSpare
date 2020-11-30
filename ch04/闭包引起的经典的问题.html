@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>111</li>
+      <li>222</li>
+      <li>333</li>
+    </ul>
+    <script>
+      var i
+      let allLi = document.querySelectorAll('li')
+
+      for (i = 0; i < allLi.length; i++) {
+        allLi[i].addEventListener('click', function () {
+          console.log(i)
+          alert(allLi[i].innerHTML)
+        })
+      }
+
+      //作业1：假定调用add(...[100,200,300]),请问这个add求和函数有多少种写法？
+      //至少写出2种情况
+      //作业2：作业2 分页的问题
+      //作业3.解决掉闭包引起的经典问题的代码
+      //作业4：预习p69页闭包的使用
+    </script>
+  </body>
+</html>

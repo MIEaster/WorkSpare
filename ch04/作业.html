@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+       let data = [{"name":"zs",age:18,gender=true,height:180},
+       {"name":"bb",age:18,gender=true,height:175},
+       {"name":"cc",age:19,gender=false,height:160},
+       {"name":"zs",age:18,gender=true,height:180},
+       {"name":"dd",age:18,gender=true,height:150}]
+
+
+       //写一个函数，名字processData,处理的就是data数组
+       //从data数组中找出符合条件的所有学生,processData返回的是一个数组
+      /*  function processData(filter){
+          let true=  filter({"name":"bb",age:18,gender=true,height:175})
+       } */
+
+
+       let result = processData(function(){
+
+       })
+    </script>
+  </body>
+</html>

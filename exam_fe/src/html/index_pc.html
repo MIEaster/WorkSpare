@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pc端</title>
+
+
+    <style>
+      .abtn {
+        display: inline-block;
+        height: 18px;
+        line-height: 18px;
+        background-color: brown;
+        border-radius: 5px;
+        padding: 7px 7px;
+        cursor: pointer;
+      }
+
+      .bg {
+        background-color: bisque;
+      }
+      img {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        left: 60%;
+        top:30%
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="app">
+      <table>
+        <tr>
+          <th>序号</th>
+          <th>编号</th>
+          <th>名称</th>
+          <th>单价</th>
+          <th>库存</th>
+          <th>小计</th>
+          <th>操作</th>
+        </tr>
+
+        <tr v-for="(p,index) in products" v-bind:class="{bg: index%2 === 0}">
+          <td>{{index + 1}}</td>
+          <td>{{p.id}}</td>
+          <td>{{p.title}}</td>
+          <td>{{p.price|currency}}</td>
+          <td>
+            <a @click="p.qty<=0?0:(p.qty-=1)" class="abtn">-</a>
+            <input v-model="p.qty" @keyup="p.qty=p.qty<0?0:p.qty" type="number" />
+            <a @click="p.qty<=0?0:(p.qty+=1)" class="abtn">+</a>
+          </td>
+          <td>{{p.price * p.qty | currency(1)}}</td>
+          <td>
+            <a @click="remove(index,p)">删除</a>
+            <a @click="edit(index,p)">编辑</a>
+          </td>
+
+          <tr>  
+            <td colspan="7" align="right">
+            {{total| currency}}
+          <td>
+
+          </tr>
+      
+
+        </td>
+      </table>
+
+      <form id="productForm" name="productForm">
+        <fieldset>
+          <legend>商品详情</legend>
+          <p>
+            <label>编号:</label>
+            <input type="number" v-model="productModel.id" :disabled="isAdd==false?true:false" />
+          </p>
+          <p>
+            <label>名称:</label>
+            <input type="text"  v-model="productModel.title"/>
+          </p>
+          <p>
+            <label>单价:</label>
+            <input type="number" v-model="productModel.price" />
+          </p>
+          <p>
+            <label>库存:</label>
+            <input type="number" v-model="productModel.qty" />
+          </p>
+          <p>
+            <label>简介:</label>
+            <textarea v-model="productModel.description" cols="100" rows="5"></textarea>
+          </p>
+
+          <p><img :src="'../lib/images/'+productModel.id+'.gif'" /></p>
+          <p>
+            <!-- 直接写button标签有submit表单的效果 -->
+            <input type="button" value="保存" @click="save"/>
+            <input type="button" value="清空" @click="clear"/>
+          </p>
+        </fieldset>
+      </form>
+    </div>
+
+    <script src="../lib/js/vue.js"></script>
+    <script src="../lib/js/jquery.js"></script>
+
+    <script>
+      Vue.filter('currency', function (v, n) {
+        if (!v) return ''
+        //toFixed() 方法可把 Number 四舍五入为指定小数位数的数字。
+        return '￥' + parseFloat(v).toFixed(n || 2)
+      })
+      let vm = new Vue({
+        el: '#app',
+        data: {
+          products: [],
+          productModel: {
+            id: 0,
+            title: '',
+            price: 0,
+            description: '',
+            qty: 0,
+          },
+          isAdd: true,
+        },
+        created() {
+          this.getAll()
+        },
+        methods: {
+          getAll() {
+            $.getJSON('http://localhost:8080/exam_be/product/list', (data) => {
+            
+              this.products = data
+
+              this.products.forEach((item, index) => {
+                item.oPrice = (item.price * (1 + Math.random())).toFixed(2)
+              })
+              console.log(this.products)
+            })
+          },
+          insert(){
+            $.ajax({
+              url:'http://localhost:8080/exam_be/product/insert',
+              type:"POST",
+              contentType:"application/json",
+              data:JSON.stringify(vm.productModel),
+              success: (data) => {
+                if(data){
+                  //清空表单数据
+                  vm.productModel = {}
+                  vm.getAll()
+                }else{
+                  alert('插入失败')
+                }
+            }})
+          },
+          update(){
+            $.ajax({
+              url:'http://localhost:8080/exam_be/product/update',
+              type:"PUT",
+              contentType:"application/json",
+              data:JSON.stringify(vm.productModel),
+              success: (data) => {
+                if(data){
+                 //清空表单数据
+                  vm.clear()
+                  vm.getAll()
+                }else{
+                  alert('更新失败')
+                }
+
+            }})
+
+          },
+          clear() {
+            this.productModel = {}
+            this.isAdd = true
+          },
+          save(){
+            if(vm.isAdd){
+              vm.insert()
+            }else{
+              vm.update()
+            }
+          },
+          remove(index,p) {
+            if(confirm('确定删除?')){
+              $.ajax({
+                url:'http://localhost:8080/exam_be/product/delete?id=' + p.id,
+                type:"DELETE",
+                success:data =>{
+                  if(data){
+                    this.getAll()
+                  }else{
+                    alert('移除失败')
+                  }
+                }
+              })
+            }
+          },
+          edit(index,p){
+            this.isAdd = false
+            // 实现深拷贝，避免表格中的行与表单中的数据产生联动效果
+            this.productModel = JSON.parse(JSON.stringify(p))
+          }
+        },
+        computed: {
+          total(){
+            let total =0
+            this.products.forEach(item=>total += item.qty * item.price)
+            return total
+          }
+        },
+      })
+    </script>
+  </body>
+</html>

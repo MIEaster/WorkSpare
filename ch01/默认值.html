@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function add(m, n) {
+        //这种写法就是给m,n添加默认值
+        //因为m没有值得时候就是undefined，undefined---》false  -》也就是还要看||的右边表达式的值
+
+        //右边是10  ----》把10赋值给m
+        m = m || 10 //m默认值为10
+        n = n || 20 //n的默认值为20
+        return m + n
+      }
+
+      add()
+      // add(100,200)
+    </script>
+  </body>
+</html>

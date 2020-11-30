@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+<script>
+    function Cat(){this.name ="f00";}
+    Cat .prototype={age:5}
+    var cat1=new Cat()
+    console.log(cat1.age)
+    console.log(cat1.hasOwnProperty("name"));
+    console.log(cat1.hasOwnProperty("age"))
+    console.log(cat1.hasOwnProperty("nickname"))
+    console.log(Object.prototype.isPrototypeOf(cat))
+    
+//    function Cat(){}
+//    var obj ={age:5}
+//    Cat.prototype = obj;
+//    var cat = new Cat();
+//    console.log(obj.isPrototypeOf(cat))
+//    console.log(Object.prototype.isPrototypeOf(cat))
+//    console.log(Object.prototype.isPrototypeOf(Function))
+    
+//    var obj ={types:[1,2,3]}
+//    console.log(obj.propertyIsEnumerable("types"))
+//    console.log(window.propertyIsEnumerable("obj"))
+//    
+//    let o2 = {
+//      _xxx:0,
+//      get age(){
+//        return this._xxx
+//      },
+//      set age(val){
+//        if(val <=0 || val >=120){
+//          throw new Error('超出范围2')
+//        }
+//        this._xxx=val
+//      }
+//    }
+    
+//    var glolalObject = this;
+//    var foo = (()=> this);
+//    console.log(foo()=== glolalObject)
+    
+//    class Car {
+//  constructor() {
+//    // Bind sayBye but not sayHi to show the difference
+//    this.sayBye = this.sayBye.bind(this);
+//  }
+//  sayHi() {
+//    console.log(`Hello from ${this.name}`);
+//  }
+//  sayBye() {
+//    console.log(`Bye from ${this.name}`);
+//  }
+//  get name() {
+//    return 'Ferrari';
+//  }
+//}
+//
+//class Bird {
+//  get name() {
+//    return 'Tweety';
+//  }
+//}
+//
+//const car = new Car();
+//const bird = new Bird();
+//
+//// The value of 'this' in methods depends on their caller
+//car.sayHi(); // Hello from Ferrari
+//bird.sayHi = car.sayHi;
+//bird.sayHi(); // Hello from Tweety
+//
+//// For bound methods, 'this' doesn't depend on the caller
+//bird.sayBye = car.sayBye;
+//bird.sayBye();  // Bye from Ferrar<!---->
+  //--------------------------------------------------------
+  /*function Animal(){
+    Animal.prototype={
+      constructor:Animal,
+      eat:function(){
+        console.log("动物在吃东西")
+      }
+    }
+    function Cat(){}
+    Cat.prototype = new Animal();
+    Cat.prototype.eat = function(){
+      Animal.prototype.eat.call(this);
+      console.log("猫在吃小鱼")；
+    }
+    new Cat().eat();
+  }*/
+  
+  //---------------------------------
+  // function Cat (){}
+  //   Cat.prototype.eat = function(){
+  //     console.log("猫在吃小鱼")
+  //   }
+    
+    
+  //   function Dog(){}
+  //     Dog.prototype.eat = function(){
+  //       console.log("狗在吃骨头")
+  //     }
+      
+  //   function animalEat(animal){
+  //     if(animal.eat instanceof Function){
+  //       animal.eat();
+  //     }
+  //   }
+    
+  //   animalEat(new Cat());
+  //   animalEat(new Dog());
+  //   animalEat(new Object());
+      
+    
+    
+    
+    
+    
+  
+    
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 1200px;
+      height: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    #pic {
+      width: 1200px;
+      height: 500px;
+    }
+
+    #left {
+      position: absolute;
+      left: 0px;
+      bottom: 150px;
+      width: 40px;
+    }
+
+    #right {
+      position: absolute;
+      right: 0px;
+      bottom: 150px;
+      width: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <img :src="imgArr[index]" id="pic">
+    <img src="../images/num1.png" alt="" id="left" @click="pre">
+    <img src="../images/num2.png" alt="" id="right" @click="next">
+  </div>
+  <script src="../lib/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        imgArr: [
+          "../images/6.png",
+          "../images/7.png",
+          "../images/8.png",
+          "../images/9.png",
+          "../images/10.png",
+          "../images/11.png",
+        ],
+        index: 0,
+      },
+      methods: {
+        pre: function () {
+          if (this.index > 0) {
+            this.index--
+          } else if (this.index == 0) {
+            this.index = 5
+          }
+        },
+        next: function () {
+          if (this.index < 5) {
+            this.index++
+          } else if (this.index == 5) {
+            this.index = 0
+          }
+        },
+      },
+      mounted() {
+        this.next();
+        setInterval(this.next, 1000);
+      },
+    })
+  </script>
+</body>
+
+</html>

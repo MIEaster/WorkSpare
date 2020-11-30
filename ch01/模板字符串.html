@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function f1() {
+        return 100
+      }
+      var s0 = 'xxx'
+      var s1 = 'abc' + s0 + 'def'
+
+      //这个是引用了一个变量s0
+      var s2 = `abc${s0} def`
+      //可以写表达式
+      var s3 = `abc ${1 + 2} def`
+      console.log(s3)
+
+      //可以调用函数
+      var s4 = `abc ${f1()} def`
+      console.log(s4)
+      //这个就是一个多行的字符串，以前的写法是要加\n
+      var s100 = `aaa
+      bbb
+      ccc
+      ddd`
+      console.log(s2)
+      console.log(s100)
+    </script>
+  </body>
+</html>

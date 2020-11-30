@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue实例</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 3.使用组件 -->
+      <!-- 传参数：第二步：给属性赋值 -->
+      <shop-button :chushizhi="myInit"></shop-button>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+      //1. 编写组件
+      let myFirstComponent = {
+        //传参数：第一步：定义一个自定义的属性，名字叫chushizhi
+        props: ['chushizhi'],
+        data: function () {
+          return {
+            count: this.chushizhi,
+          }
+        },
+        template: `
+          <div>
+            <input type="text" v-model="count"/>
+            <input type="button" value="+" @click="count++" />
+          </div>
+        `,
+      }
+
+      //2.注册：全局与局部,参数1：组件的名字，参数2：组件对象
+      Vue.component('shop-button', myFirstComponent)
+
+      //3.使用组件
+      new Vue({
+        el: '#app',
+        data: {
+          myInit: 40,
+        },
+      })
+    </script>
+  </body>
+</html>

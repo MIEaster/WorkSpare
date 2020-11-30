@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //什么叫构造型函数：其实就是一个普通的函数
+      //我们人为的把其当成一个可以创建出新的对象出来的函数用
+      //特点：首字母大写
+
+      function Person() {}
+      let p1 = new Person()
+      //人为禁止像下面这样直接调用。
+      //Person()
+
+      //添加属性与方法
+      //可以给p1这个对象动态添加成员
+      p1.name = 'abc'
+
+      let p2 = new Person()
+      //输出undefined，因为p2这个对象没有name属性
+      console.log(p2.name)
+
+      function Student() {
+        this.name = '乳名'
+        this.work = function () {
+          console.log('我在工作')
+        }
+      }
+      let s1 = new Student()
+      s1.age = 18
+      console.log(s1.name)
+      /*
+      够造型函数创建对象的逻辑过程
+      1.new Xxx
+      2.在够造型函数内部直接创建一个空的对象，
+      可以把其理解为对象字面量 o = {}
+      3.接着把这个对象o  === this
+      4.不断的利用js的动态特性给this这个对象添加新的成员，比如name
+      5.返回this
+      */
+
+      let s2 = new Student()
+      console.log(s2.name)
+
+      //函数本身也是一个对象
+      Student.xxx = 1000
+    </script>
+  </body>
+</html>

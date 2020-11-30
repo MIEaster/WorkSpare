@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .hide {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="accordion">
+        <h3 @click="handle1">选项卡</h3>
+        <div :class="{hide:xuanxiangyi}">111111</div>
+        <h3 @click="handle2">选项卡2</h3>
+        <div ref="xxx">2222</div>
+        <h3 @click="handle3">选项卡3</h3>
+        <div :class="{hide:xuanxiangyi3}">333</div>
+      </div>
+    </div>
+    <script src="../lib/vue.js"></script>
+
+    <script>
+      let vm = new Vue({
+        el: '#app',
+        data: {
+          xuanxiangyi: false,
+
+          xuanxiangyi3: false,
+        },
+        methods: {
+          handle1: function () {
+            this.xuanxiangyi = !this.xuanxiangyi
+          },
+          handle2: function () {
+            let div = this.$refs.xxx
+            div.classList.toggle('hide')
+          },
+          handle3: function () {
+            this.xuanxiangyi3 = !this.xuanxiangyi3
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

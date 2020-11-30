@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+
+      1.编写要导出的js文件，比如a.js
+      2.在要导出的js文件中，确定要导出给其它模块使用的内容
+      然后就用export {a,b,c,d}
+      --------------------------------
+      3.在html中的script标签的type一定要是module
+      4.在此type为module的脚本块里面
+      import {a,b,c,d} from './js/a.js'
+
+     -->
+    <script type="module">
+      //这里写的名字要与导出的名字一样
+      // import { b, add } from './a.js'
+
+      //下面的东西会报错，
+      //import { b, add, b } from './a.js'
+      //导入的时候，可以只导入部分
+      import { add } from './a.js'
+
+      //console.log(b)
+      //console.log(a)// 报错，因为没有导出变量a
+
+      console.log(add(100, 400))
+    </script>
+  </body>
+</html>

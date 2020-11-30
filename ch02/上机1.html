@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function jieceng(n) {
+        if (n <= 0) return 1
+
+        return n * jieceng(n - 1)
+      }
+      let jieceng2 = function () {
+        if (n <= 0) return 1
+
+        return n * jieceng(n - 1)
+      }
+
+      let jieceng3 = new Function(
+        'n',
+        'if (n <= 0) return 1;return n * jieceng(n - 1)'
+      )
+      console.log(jieceng3(6))
+    </script>
+  </body>
+</html>

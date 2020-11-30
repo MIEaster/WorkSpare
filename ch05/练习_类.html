@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+      用3种方式写一个对象
+
+      一个产品：
+        1.名字----------------》数据属性
+        2.单价----------------》数据属性
+        3.数量（库存）---------》数据属性
+        4.价值（单价* 数量）----》getter属性
+        5.描述-----------------》方法
+*/
+      //第一种：对象字面量
+      let product = {
+        name: '华为mate40',
+        price: 6999,
+        qty: 10,
+        get subtotal() {
+          return this.price * this.qty
+        },
+        info: function () {
+          let desc = `名字是：${this.name},价值是:${this.subtotal}`
+          console.log(desc)
+        },
+      }
+
+      //第二种：构造型函数
+
+      function Product(name) {
+        this.name = name
+        this.price = 0
+        this.qty = 0
+        this.subtotal = function () {
+          return this.price * this.qty
+        }
+        this.info = function () {
+          let desc = `名字是：${this.name},价值是:${this.subtotal()}`
+          console.log(desc)
+        }
+      }
+
+      let p2 = new Product('mate40')
+      p2.price = 6999
+      p2.qty = 10
+
+      p2.info()
+
+      //第三种：es6 class
+
+      class Product2 {
+        price = 0
+        qty = 0
+        constructor(name) {
+          this.name = name
+        }
+        get subtotal() {
+          return this.price * this.qty
+        }
+        info() {
+          let desc = `名字是：${this.name},价值是:${this.subtotal}`
+          console.log(desc)
+        }
+      }
+      let p3 = new Product2('m40')
+      p3.price = 6999
+      p3.qty = 2
+      p3.info()
+    </script>
+  </body>
+</html>

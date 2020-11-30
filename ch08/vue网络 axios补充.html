@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .tianqi {
+        float: left;
+        margin: 10px;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="city" />
+      <input type="button" value="搜索" @click="search" />
+
+      <div id="result">
+        <div v-for=" item in result" :key="item.date" class="tianqi">
+          <div>{{item.date}}</div>
+          <div>{{item.low}}</div>
+          <div>{{item.high}}</div>
+          <div>{{item.type}}</div>
+        </div>
+      </div>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script src="../lib/axios.min.js"></script>
+
+    <script>
+      axios.defaults.baseURL = 'http://wthrcdn.etouch.cn/'
+      Vue.prototype.get = axios.get
+      let vm = new Vue({
+        el: '#app',
+        data: {
+          city: '珠海',
+          result: [],
+        },
+        methods: {
+          search: async function () {
+            let url = 'weather_mini?city=' + this.city
+            /*  this.get(url).then((res) => {
+              console.log(res)
+              this.result = res.data.data.forecast
+              console.log(res.data.data.forecast)
+              console.log(this.result)
+            }) */
+
+            let res = await this.get(url)
+            this.result = res.data.data.forecast
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

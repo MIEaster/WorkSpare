@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="module">
+      /*    import { i, j, sum } from './02.js'
+
+      console.log(sum(2, 3)) */
+
+      // 演示导入的时候重命名
+      import { i as m, j as n, sum as add } from './02.js'
+
+      console.log(add(m, n))
+    </script>
+  </body>
+</html>

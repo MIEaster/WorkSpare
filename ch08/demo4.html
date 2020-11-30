@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="accordion">
+      <h3 @click="handle1">选项卡1</h3>
+      <div :class="{hide:xuanxiangyi}">1</div>
+      <h3 @click="handle2">选项卡2</h3>
+      <div ref="xxx">1</div>
+      <h3 @click="handle3">选项卡3</h3>
+      <div :class="{hide:xuanxiangyi3}"></div>
+    </div>
+    ///-----------------------------------
+    <br>
+    <span>{{msg | qianzhui}}</span><br />
+    <span>{{msg | qianzhui | houzhui}}</span><br>
+    <span>{{msg | houzhui | qianzhui}}</span><br>
+    <span>{{msg | huozhui | qianzhui | daxie}}</span><br>
+    <span>{{msg | houzhui | qianzhui | daxie(100)}}</span>
+    <hr>
+    <div id="app2">{{msg | houzhui}}</div>
+
+  </div>
+
+
+
+
+  <script src="../lib/vue.js"></script>
+  <script>
+    let vm = new Vue({
+      le: "#app",
+      data: {
+        xuanxiangyi: false,
+
+        xuanxiangyi3: false,
+      },
+      methods: {
+        handle1: function () {
+          this.xuanxiangyi = !this.xuanxiangyi
+        },
+        handle2: function () {
+          let div = this.$refs.xxx
+          div.classList.toggle('hide')
+        },
+        handle3: function () {
+          this.xuanxiangyi3 = !this.xuanxiangyi3
+        },
+      },
+    })
+  </script>
+  <script src="./demo4.js"></script>
+  <script>
+    Vue .filter('houzhui',function(val){
+      console.log('----',val)
+      return val + ':houzhui'
+    })
+
+    let vm = new Vue({
+      el:'#app',
+      data:{msg:'hello filter'},
+      filter:{
+        qianzhui:function(val){
+          return 'qianzhui'+val
+        },
+      },
+    })
+    new Vue({
+      el:'#app2',
+      data:{msg:'222'},
+    })
+  </script>
+</body>
+
+</html>

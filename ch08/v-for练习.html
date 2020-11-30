@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      a {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+      }
+      .currentpage {
+        background-color: blue;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <a
+          v-for="item in pageinfo.nums"
+          :class="{currentpage:item === pageinfo.currentpage}"
+          >{{item}}</a
+        >
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>名字</th>
+            <th>年龄</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item,index) in items">
+            <td>{{index+1}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.age}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="../lib/vue.js"></script>
+
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          pageinfo: {
+            nums: [10, 11, 12, 13, 14, 15],
+            currentpage: 12,
+          },
+          items: [
+            { name: 'zhangsan', age: 18 },
+            { name: 'lisi', age: 28 },
+            { name: 'wangmazi', age: 16 },
+          ],
+        },
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //rest:剩下的
+
+      function add(m, ...aaaa) {
+        // m = 100,aaaa是个数组，包含4个实际参数中除了100之外剩下的参数
+        let result = m
+        for (let item of aaaa) {
+          result += item
+        }
+        return result
+      }
+
+      // console.log(add(100, 200, 300, 400))
+
+      //2. 表明函数中可以只有剩余参数
+      function add2(...aaaa) {
+        // m = 100,aaaa是个数组，包含4个实际参数中除了100之外剩下的参数
+        let result = 0
+        for (let item of aaaa) {
+          result += item
+        }
+        return result
+      }
+
+      //console.log(add2(100, 200, 300, 400))
+
+      //3.剩余参数的解构运算
+      function add3(...[a, b, c, d]) {
+        return a + b + c + d + e
+      }
+
+      console.log(add3(1000, 200, 300, 400))
+
+      //500是没用上的，等价于let [a,b,c,d] = [1000, 200, 300, 400, 500]
+      console.log(add3(1000, 200, 300, 400, 500))
+    </script>
+  </body>
+</html>

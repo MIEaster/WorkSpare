@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>1</p>
+    <p>2</p>
+    <p>3</p>
+    <p>4</p>
+    <p>5</p>
+    <script>
+      /*  var ps = document.querySelectorAll('p')
+      // console.log(typeof ps)
+      // console.log(ps.length)
+      // console.log(ps[0])
+      let o = { 0: 'abc', 1: 'def', length: 2 }
+      let arr = Array.prototype.slice.call(o)
+      console.log(arr)
+      console.log(arr[0]) // abc
+      console.log(arr[1]) // def */
+
+      function addArguments(arg1, arg2) {
+        return arg1 + arg2
+      }
+      // 创建一个函数，它拥有预设的第一个参数
+      var addThirtySeven = addArguments.bind(null, 37)
+
+      // 37 + 5 = 42
+      var result1 = addThirtySeven(5)
+
+      // 37 + 5 = 42 ，第二个参数被忽略
+      var result2 = addThirtySeven(5, 10)
+
+      console.log(result1, result2)
+    </script>
+  </body>
+</html>

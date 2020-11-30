@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let p = { age: 18 }
+      let c = Object.create(p)
+      console.log(c)
+      console.log(c.__proto__ === p) //true
+      console.log(c.constructor === Object) //true
+    </script>
+  </body>
+</html>

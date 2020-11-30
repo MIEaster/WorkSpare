@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //立即执行的函数,写法一
+
+      ;(function (m, n) {
+        let result = m + n
+        //console.log(result)
+      })(5, 6)
+      ;(function (f) {
+        f()
+      })(function () {
+        // console.log('xxx')
+      }) /*;(
+         (function(f){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      })(100) */
+      ;(function (value, fun) {
+        //value = 100,fun = 匿名函数
+        fun(value) //这里就可以快速的看到IIFE函数运用参数的情况
+      })(100, function (value2) {
+        //匿名函数
+        //IIFE具体的执行逻辑代码都在这里。。。
+        console.log(value2)
+      })
+    </script>
+  </body>
+</html>

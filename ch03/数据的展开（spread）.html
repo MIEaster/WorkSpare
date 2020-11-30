@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = ['a', 'b', 'c', 'd']
+      //展开运算符就是三个点
+
+      //这里的展开运算符相当于复制了一个数组
+      let arr2 = [...arr]
+      let arr3 = [...arr, 'e', 'f']
+
+      function add(m, n) {
+        return m + n
+      }
+
+      // let result = add(100,200)
+      let result = add(...[100, 200])
+      // console.log(result)
+
+      let o1 = { name: 'abc', age: 18 }
+      let o2 = { name: 'def', gender: true }
+      let o3 = { ...o1, ...o2 }
+      //console.log(o3)
+
+      let map = new Map()
+      map.set(100, 'abc')
+      map.set(200, 'def')
+      map.set(300, 'xxx')
+      //[[100,abc],[200,def],[300,xxx]]
+
+      console.log([...map])
+    </script>
+  </body>
+</html>

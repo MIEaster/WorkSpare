@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+          1 作业1：
+            假定声明了一个对象let o = {name:"abc"}，此时对象o的属性name是可读可写的，
+            请问可以通过Object.defineProperty方法把其改写为不可写的属性吗？
+
+
+          2.作业2：
+            属性的配置特性中configurable与enumerable是什么意思，写出代码演示出来。
+
+          3.作业3.自学Object的静态方法，见md文档中的6.6节（最后完成。。。）
+
+          4.假定有一个对象o，请问delete o.name 这个代码在干嘛？什么时候这行代码会执行失败？
+
+          5.用js完成分页类的编写
+
+
+          6.假定有一个构造函数Person,它是这样编写的
+          function Person(x){
+            this.name = x
+            this.address = {
+              province:"guandong",
+              city:"zhuhai"
+            }
+          }
+          let p1 = new Person("a")
+          let p2 = new Person("b")
+          请问下面的代码输出什么？为什么？
+          console.log(p1.name === p2.name)
+
+          p1.address.city="guangzhou"
+          请问下面的代码又输出什么？为什么？
+          console.log(p1.address.city === p2..address.city)
+
+          7.请问访问器属性与普通属性相比，有哪些优点？
+
+           */
+
+      //  第一个作业
+      /*  let o = { name: 'abc' }
+            Object.defineProperty(o, 'name', {
+              writable: false,
+            })
+            o.name = 'def'
+            console.log(o.name) */
+
+      //第二个作业
+
+      /*      let o2 = { age: 18 }
+            delete o2.age
+            console.log(o2.age)
+            //configurable默认值是false表示不可配置，也就是不可以删除属性成员
+            Object.defineProperty(o2, 'name', { configurable: true, writable: true })
+            o2.name = 'asdf'
+            console.log('删之前：', o2.name)
+            delete o2.name
+            console.log('删之后:', o2.name) */
+
+      //第六个
+      let addr = {
+        province: 'guandong',
+        city: 'zhuhai',
+      }
+      function Person(x) {
+        this.name = x
+        this.address = addr
+      }
+      let p1 = new Person('a')
+      let p2 = new Person('b')
+
+      console.log(p1.name === p2.name)
+
+      p1.address.city = 'guangzhou'
+
+      console.log(p1.address.city === p2.address.city)
+    </script>
+  </body>
+</html>

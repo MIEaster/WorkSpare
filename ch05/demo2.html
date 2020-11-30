@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let o ={
+      name:'a'
+    }
+    let age =18
+    let s2 = {
+      name:'s',
+      age:age,
+    }
+
+    let o3 ={
+      name:'a',
+      age
+    }
+
+    let gender = true 
+    let height = 100
+    let o4 = {
+      gender ,
+      height
+    }
+    console.log(o4.gender)
+    console.log(o4.height)
+
+    let o5 ={
+      name:'a',
+    }
+
+    Object.defineProperty(o5,'bj',{
+      writable:false,
+      value:'164ban'
+    })
+    console.log(o5.bj)
+    o5.bj='163'
+    console.log('改写之后',o5.bj)
+  </script>
+</body>
+</html>

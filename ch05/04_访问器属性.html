@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //因为对象字面量不支持字段的语法
+      //所以就通过定义属性的方式来模拟字段的功能
+      //毕竟是模拟，为了区分，就把这类属性的名字加一个下划线
+      let o = {
+        _age: 0,
+      }
+      //虽然外部可以直接访问，但我们人为规定不能这样使用
+      o._age = 10000
+      Object.defineProperty(o, 'age', {
+        get: function () {
+          return this._age
+        },
+        set: function (val) {
+          if (val <= 0 || val >= 120) {
+            throw new Error('超出范围')
+          }
+          this._age = val
+        },
+      })
+
+      //o.age = 180
+      //console.log(o.age)
+      //可以绕过规则，但不要这样做。
+      o._age = 200
+      console.log(o.age)
+
+      //第二种方法
+      let o2 = {
+        _xxx: 0,
+        get age() {
+          return this._xxx
+        },
+        set age(val) {
+          if (val <= 0 || val >= 120) {
+            throw new Error('超出范围2')
+          }
+          this._xxx = val
+        },
+      }
+      //注意：声明的时候像是方法，但是它毕竟是属性，所以不要加括号
+      o2.age = 23
+      console.log(o2.age)
+    </script>
+  </body>
+</html>

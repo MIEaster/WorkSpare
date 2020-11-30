@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue实例</title>
+  </head>
+  <body>
+    <div id="app">
+      <input v-model="username" />
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+      //定义用户对象，作vue实例的数据
+      let user = { username: 'tom' }
+
+      //创建一个Vue实例
+      var vm = new Vue({
+        el: '#app',
+        data: user,
+        updated: function () {
+          //虚拟DOM重新刷新时的事件
+          console.log('视图重新渲染了。')
+        },
+      })
+
+      console.log(vm.username) //tom
+      console.log(vm.$data === user) //true
+    </script>
+  </body>
+</html>

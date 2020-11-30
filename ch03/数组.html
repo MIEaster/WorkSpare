@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = ['a', 'b', 'c', 'd']
+      //创建一个长度为7的数组
+      let arr2 = new Array(7)
+
+      // push是往数组中添加数据
+      arr.push('e')
+      //pop是从里面取出数据，从尾部开始取
+      let result = arr.pop()
+      // console.log(result)
+
+      //下面代码中的return true只是从回调函数中返回，forEach并没有结束
+      // 所以log（xxxx)会一直输出
+      //forEach方法不适合找东西，找到return不停止循环
+      arr.forEach(function (value, index, a) {
+        if (value === 'b') {
+          // console.log(value, index)
+          return true
+        } else {
+          // console.log('xxxx')
+        }
+      })
+
+      //shift就是从数组的首部（索引0）弹出一个元素
+      //  let result2 = arr.shift()
+      //console.log(result2)
+      //console.log(arr.length)
+
+      // arr.unshift(1, 2, 3) // 1,2,3,a,b,c,d
+      // console.log(arr)
+
+      //是判断数组中有没有这个数
+      let result3 = arr.includes('cc')
+
+      // console.log(result3)
+
+      let result4 = arr.slice(0, 2)
+      //console.log(result4)
+      //console.log(arr)
+
+      // let result5 = arr.splice(1, 2)
+      // console.log(result5)
+      // console.log(arr)
+
+      //删除以索引1开始位置上的数，删除一个，然后把100插入到索引1的位置上
+      // let result6 = arr.splice(1, 1, 100, 200)
+      // console.log(result6)
+      // console.log(arr)
+
+      // let result6 = arr.splice(1, 2, 100, 200, 300)
+      // console.log(result6)
+      // console.log(arr)
+
+      //只要回调函数返回true就表示找到 立即结束循环，找不到就返回-1
+      let index = arr.findIndex(function (v) {
+        if (v === 'c') {
+          return true
+        }
+      })
+      //console.log(index)
+      //只要回调函数返回true，就表示找到，立即结束循环，否则返回false
+      let index2 = arr.some(function (v) {
+        if (v === 'cc') {
+          return 'c'
+        }
+      })
+      console.log(index2)
+
+      let ele = arr.find(function (v) {
+        if (v === 'c') {
+          return true
+        }
+      })
+      console.log(ele)
+
+      let newArr = arr.filter(function (v) {
+        return v === 'c' || v === 'd'
+      })
+      console.log(newArr)
+    </script>
+  </body>
+</html>

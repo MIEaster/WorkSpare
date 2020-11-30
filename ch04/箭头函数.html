@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let f = () => console.log('hello 箭头函数或者说lambda表达式')
+
+      f()
+
+      let f2 = () => 100
+
+      let result = f2() //result = 100
+      console.log(result)
+
+      /*
+//箭头函数组成  :   () => {}
+1.箭头左边的括号是声明形参的地方，有多少个参数就声明多少个参数
+  比如2个参数：(x,y),三个参数(x,y,z) 
+  如果只有一个参数可以写成(x)或者x，也就是括号可以省略
+      如果没有参数，括号不能省略
+
+
+      2.{} ：这里就写函数体，可以有一行代码，也可以有无数行代码
+      如果只有一行代码，大括号可以省略
+{console.log('xxx')}可以简写为console.log('xxx')
+如果函数只有一行，并且有返回值，可以省略掉return
+
+      */
+
+      let add = (a, b) => a + b
+      add(100, 200)
+      let test1 = (x) => {
+        console.log(x)
+        return x
+      }
+
+      test1()
+
+      let data = [
+        { age: 18, name: 'a1', gender: true, height: 170 },
+        { age: 19, name: 'a2', gender: true, height: 180 },
+        { age: 20, name: 'a3', gender: false, height: 150 },
+        { age: 17, name: 'a4', gender: false, height: 160 },
+        { age: 22, name: 'a5', gender: true, height: 165 },
+      ]
+
+      //filter参数是一个过滤用的函数
+
+      //第一个需求：找出超过170的人出来
+      /* function processData() {
+        let arr = []
+        for (let item of data) {
+          if (item.height >= 170) {
+            arr.push(item)
+          }
+        }
+        return arr
+      } */
+      //找出超过160的女生
+      /* function processData() {
+        let arr = []
+        for (let item of data) {
+          if (item.height >= 160 && item.gender == false) {
+            arr.push(item)
+          }
+        }
+        return arr
+      } */
+
+      //把千变万化的过滤规则，不要写死在processData方法内，而是交给别人去处理
+      //自己搞不定的事情交给别人。
+
+      function processData(filter) {
+        let arr = []
+        for (let item of data) {
+          if (filter(item)) {
+            arr.push(item)
+          }
+        }
+        return arr
+      }
+
+      /*      let arr = processData(function (a) {
+        return a.age >= 18 && a.height >= 180
+      })
+
+      console.log(arr) */
+
+      let arr2 = processData((xxx) => xxx.age >= 18 && xxx.age <= 20)
+
+      console.log(arr2)
+    </script>
+  </body>
+</html>

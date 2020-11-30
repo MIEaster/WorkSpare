@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <p v-text="aa"></p>
+      <p v-text="bb"></p>
+      <p v-text="cc">xy</p>
+    </div>
+
+    <script src="../lib/vue.js"></script>
+
+    <script>
+      /* 
+      v-text:
+      1.会完全用属性的值替换掉元素内部的文本
+      2.属性值是原样输出
+       */
+      let vm = new Vue({
+        el: '#app',
+        data: {
+          h: 'hellos',
+          aa: 'abc',
+          bb: '<h2>def</h2>',
+          cc: '123',
+        },
+      })
+    </script>
+  </body>
+</html>

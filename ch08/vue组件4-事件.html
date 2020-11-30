@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue实例</title>
+  </head>
+  <body>
+    <div id="app">
+      <event-demo @my-event="handle"></event-demo>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+      Vue.component('event-demo', {
+        template: `
+
+        <div>
+          <input type="button" value="+" @click="$emit('my-event')" />
+        </div>
+        `,
+      })
+
+      new Vue({
+        el: '#app',
+        methods: {
+          handle: function () {
+            console.log('父组件中监听了子组件引发的事件')
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

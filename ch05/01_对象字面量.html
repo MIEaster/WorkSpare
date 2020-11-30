@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //创建了一个“空”的对象
+    let o = {}
+
+    //接着利用js的动态特性，运行时随时随地给对象添加新的成员（member）
+    o.name="abc"
+    o.work = function(){
+      console.log("我在工作");
+    }
+
+    let name = o.name
+    o.work()
+  </script>
+</body>
+</html>

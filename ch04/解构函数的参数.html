@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //标准的解构运算
+      let [a, b] = [100, 200]
+      console.log(a, b)
+      function add([m, n]) {
+        return m + n
+      }
+
+      let arr = [100, 200]
+      let result = add(arr)
+      console.log('result: ', result)
+
+      function add2(arr) {
+        return arr[0] + arr[1]
+      }
+    </script>
+  </body>
+</html>

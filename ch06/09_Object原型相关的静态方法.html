@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let o = { age: 18 }
+      function Person() {}
+      let p1 = new Person()
+      //返回对象的原型对象，也就是p1.__proto__的值
+      let result = Object.getPrototypeOf(p1)
+      console.log(result)
+      console.log(result === Person.prototype)
+
+      Object.setPrototypeOf(p1, o)
+
+      console.log(p1.__proto__ === o)
+      console.log(Object.getPrototypeOf(p1) === o)
+    </script>
+  </body>
+</html>

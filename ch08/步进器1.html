@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="button" value="-" v-on:click="pre" />
+    <p>{{count}}</p>
+    <input type="button" value="+" v-on:click="next" />
+  </div>
+  <script src="../lib/vue.js"></script>
+  <script>
+    let app = new Vue({
+      el: '#app',
+      data: {
+        count: 0,
+      },
+      methods: {
+        pre: function () {
+          if (this.count >= 1) {
+            this.count = this.count - 1*10
+          } else {
+            this.count = 0
+          }
+        },
+        next: function () {
+          if (this.count < 100) {
+            this.count = this.count + 1*10
+          } else {
+            this.count = 100
+          }
+        },
+      },
+    })
+  </script>
+</body>
+</html>

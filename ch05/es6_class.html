@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Person {
+        age = 18 //实例字段，不要用let，const之类的东西修饰
+        static canUseTools = true
+        constructor(name) {
+          this.name = name
+        }
+        get age() {
+          return this.age
+        }
+        set age(val) {
+          this.age = val
+        }
+        static get canUserTools() {
+          return true
+        }
+        work() {
+          console.log('我在工作')
+        }
+
+        add(a, b) {
+          return a + b
+        }
+
+        static eat() {
+          console.log('chi....')
+        }
+      }
+      let p1 = new Person('hello')
+      /*     console.log(p1.name)
+
+      let p2 = new Person('hello')
+      p2.name = 'hello2'
+
+      console.log(p1.name, p2.name) */
+      /* 
+      let Person  = class{}
+      let Person = class Person2{
+
+      } */
+
+      //  console.log(p1.age) //输出18，意味着字段是公有的
+      /*      console.log(Person.age) //undefined
+      console.log(p1.canUseTools)
+      console.log(Person.canUseTools) */
+      p1.age = 22
+      /*   console.log(p1.age)
+      console.log(Person.canUseTools) */
+      p1.work()
+      console.log(p1.add(10, 20))
+
+      Person.eat()
+    </script>
+  </body>
+</html>

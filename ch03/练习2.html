@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="content" />
+    <input type="button" id="btnAdd" class="add" value="增加" />
+
+    <ul></ul>
+
+    <script>
+      let data = []
+      const btnAdd = document.querySelector('.add')
+      const ul = document.querySelector('ul')
+      btnAdd.addEventListener('click', function () {
+        const txtcontent = document.querySelector('#content')
+        data.push(txtcontent.value)
+        fillResult()
+      })
+
+      function fillResult() {
+        ul.innerHTML = ''
+        data.forEach(function (value, index) {
+          let li = document.createElement('li')
+
+          let innerHtml = `
+            <span>${index + 1}</span>
+            <span>${value}</span>
+            <input type="button" value="删除" class="delete" onclick="delHandle('${value}')"/>
+          `
+          li.innerHTML = innerHtml
+          ul.appendChild(li)
+        })
+      }
+
+      function delHandle(txt) {
+        //思路，找出要删除的文本，对应的把数组中的此文本项删掉，然后重新调用fillResult
+        //1. 找出当前删除按钮对应的文本
+
+        // let target = e.target
+        //let txt = target.previousElementSibling.innerText
+        let index = data.findIndex(function (value) {
+          return value === txt
+        })
+        data.splice(index, 1)
+
+        fillResult()
+      }
+    </script>
+  </body>
+</html>

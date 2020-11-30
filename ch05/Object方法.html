@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let o = { name: 'abc' }
+
+      Object.defineProperty(o, 'age', {
+        enumerable: false,
+        writable: true,
+        value: 18,
+      })
+
+      for (let p in o) {
+        //  console.log(p, o[p])
+      }
+      // console.log(o.toString())
+      // console.log(o.hasOwnProperty('toString'))
+
+      //console.log(o.propertyIsEnumerable('name'))
+      //console.log(o.propertyIsEnumerable('age'))
+
+      const object1 = {
+        a: 'somestring',
+        b: 42,
+      }
+
+      for (const [key, value] of Object.entries(object1)) {
+        //console.log(`${key}: ${value}`)
+      }
+
+      // simple array
+      var arr = ['a', 'b', 'c']
+      // console.log(Object.keys(arr)) // console: ['0', '1', '2']
+
+      // array like object
+      var obj = { 0: 'a', 1: 'b', 2: 'c' }
+      //console.log(Object.keys(obj)) // console: ['0', '1', '2']
+
+      //console.log(Object.keys(o)) //["name"]
+
+      let o5 = { name: 'abc' }
+      let o6 = { name: 'abc' }
+      let o7 = o5
+      //console.log('o5 is o6:', Object.is(o5, o6))
+      // console.log('o5 is o7:', Object.is(o5, o7))
+      o7.name = 'def'
+      // console.log('o5 is o7:', Object.is(o5, o7))
+
+      Object.seal(o5)
+      o5.name = 'dddd'
+      console.log(o5.name)
+      for (let p in o5) {
+        console.log(p, o5[p])
+      }
+      Object.defineProperty(o5, 'name', {
+        enumerable: false,
+      })
+      for (let p in o5) {
+        console.log(p, o5[p])
+      }
+    </script>
+  </body>
+</html>

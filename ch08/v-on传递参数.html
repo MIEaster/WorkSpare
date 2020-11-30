@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="button" value="事件-传递参数" @click="handle(100,'abc')" />
+      <input type="button" value="事件-传递参数2" @click="handle2(param)" />
+      <input type="button" value="事件-传递参数3" @click="handle2(param*3)" />
+      <!-- vue改造了事件处理的功能，比如说事件处理函数的this被vue改了 -->
+      <input type="button" value="事件-传递参数4" @click="handle3($event)" />
+      <input
+        type="button"
+        value="事件-传递参数5"
+        @click="handle4(param,$event)"
+      />
+    </div>
+
+    <script src="../lib/vue.js"></script>
+
+    <script>
+      let vm = new Vue({
+        el: '#app',
+        data: {
+          counter: 0,
+          param: 200,
+        },
+        methods: {
+          handle: function (num, str) {
+            alert(num)
+            alert(str)
+          },
+          handle2: function (p) {
+            alert(p)
+          },
+          handle3: function (e) {
+            // e.stopPropagation()
+            // e.preventDefault()
+            console.log(e.target.value)
+            console.log(e)
+          },
+          handle4: function (p, e) {
+            console.log(p, e)
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

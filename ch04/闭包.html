@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*  function f() {
+        var a = 100
+        console.log('在函数f内部可以:', a)
+      }
+      f()
+      //这里是不能访问函数f中的变量的，因为函数作用域的问题
+      console.log(a) */
+
+      function f2() {
+        var aa = 1000
+        return function () {
+          console.log(aa)
+        }
+      }
+
+      let result = f2() //result是一个函数
+      result()
+
+      //这里f2就是一个闭包函数，它捕获了它的父级函数中的变量aa
+    </script>
+  </body>
+</html>

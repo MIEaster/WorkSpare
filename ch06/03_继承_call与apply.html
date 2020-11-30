@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        1. 创建一个空对象 {}
+        2.给this赋值 ={}
+        3.给空对象动态添加name，age
+        4.返回这个空对象
+      */
+      function Parent(name, age) {
+        this.name = name
+        this.age = age
+      }
+
+      function Child(name, age) {
+        Parent.call(this, name, age)
+        this.c1 = 'c1'
+      }
+
+      function Child2(name, age) {
+        Parent.apply(this, [name, age])
+        this.c2 = 'c2'
+      }
+
+      let c1 = new Child('aaa', 18)
+      let c2 = new Child2('bbb', 19)
+      console.log(c1)
+      console.log(c2)
+    </script>
+  </body>
+</html>

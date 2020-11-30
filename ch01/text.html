@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2 id="topic">querySelector()</h2>
+  <p>段落一</p>
+<p class="blue" >段落二</p>
+<p class="blue" >段落三</p>
+<p class="toptic blue">段落四</p>
+<p>段落五</p>
+<div>
+  <p id="p6">段落六</p> 
+  <p id="p7">段落七</p>
+</div>
+<script>
+  var topic=document.querySelector("#topic");
+console.log(topic.innerHTML)
+
+var p = document.querySelector("p")
+console.log(p.innerHTML);
+
+var blue  = document.querySelector(".blue");
+console.log(blue.innerHTML);
+
+var ptopic = document.querySelector("p.toppic");
+console.log(ptopic.innerHTML);
+
+var div7 = document.querySelector("div").querySelector("#div7");
+console.log(div7.innerHTML);
+</script>
+
+
+
+</body>
+</html>

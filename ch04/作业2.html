@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li>111</li>
+      <li>222</li>
+      <li>333</li>
+    </ul>
+
+    <script>
+      //add(...[100,200,300])
+      //第一种答案
+      function add(a, b, c) {
+        return a + b + c
+      }
+
+      //1.把[100,200,300]当成数组
+      //2. ...是展开运算符，所以就是把数组进行展开===》100,200,300这3个数
+      let result = add(...[100, 200, 300])
+      //上面的代码等价于下面
+      //let result = add(100,200,300)
+      // console.log(result)
+
+      //第二种
+      function add2(...arr) {
+        let result = 0
+        for (let item of arr) {
+          result += item
+        }
+        return result
+      }
+      let result2 = add2(...[100, 200, 300])
+      // console.log(result2)
+      //第三种，可以利用arguments对象
+
+      let data = [
+        { name: 'a1', age: 18 },
+        { name: 'a2', age: 18 },
+        { name: 'a3', age: 18 },
+        { name: 'a4', age: 18 },
+        { name: 'a5', age: 18 },
+      ]
+
+      function getPagedData(pageNo = 1, pageSize = 2) {
+        let startIndex = (pageNo - 1) * pageSize
+        let endIndex = pageNo * pageSize
+        let result = data.slice(startIndex, endIndex)
+        return result
+      }
+      // console.log(getPagedData())
+      // console.log(getPagedData(2))
+      // console.log(getPagedData(3))
+      // console.log(getPagedData(4))
+
+      console.log(getPagedData(1, 3))
+      console.log(getPagedData(2, 3))
+      console.log(getPagedData(3, 3))
+    </script>
+
+    <script>
+      let allLi = document.querySelectorAll('li')
+
+      for (let i = 0; i < allLi.length; i++) {
+        allLi[i].addEventListener('click', function () {
+          console.log(i)
+          alert(allLi[i].innerHTML)
+        })
+      }
+    </script>
+  </body>
+</html>

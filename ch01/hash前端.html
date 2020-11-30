@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      div {
+        height: 300px;
+        width: 300px;
+        border: 1px solid rebeccapurple;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#abc">调到锚点abc处</a>
+    <a href="#def">调到锚点def处</a>
+
+    <div></div>
+    <div></div>
+    <div id="abc">abcccccxcx</div>
+
+    <div></div>
+    <div></div>
+
+    <p id="def">asd;lfkjasl;dfkj;alskjdf;laskdfjasdfasd</p>
+    <script>
+      window.addEventListener('hashchange', function (e) {
+        e.preventDefault()
+        //console.log(e)
+
+        var newUrl = e.newURL
+        //写点代码，把hash值取到
+
+        //获取hash值
+        var index = newUrl.indexOf('#')
+        var hashValue = newUrl.substring(index + 1)
+
+        console.log(hashValue)
+        //利用获取到的hash值，构建一个请求地址
+        var reqUrl = 'localhost:8080/firstweb/' + hashvalue
+
+        //利用这个请求地址，发起ajax请求，利用请求的结果数据填充到当前页面
+        //这 就是hash技术+ ajax处理单页路由，也就是所谓的hjax技术
+        //vue框架实现了类似的技术
+        $.get(requet, function (result) {})
+      })
+      //单页应用SPA：single Page Application
+    </script>
+  </body>
+</html>

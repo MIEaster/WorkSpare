@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>移动端</title>
+
+    <link rel="stylesheet" href="../lib/css/vant_index.css" />
+    <script src="../lib/js/vue.js"></script>
+    <script src="../lib/js/vant.min.js"></script>
+
+    <script src="../lib/js/jquery.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <van-nav-bar title="cj 备课" left-text="返回" right-text="按钮" left-arrow>
+        <template #right>
+          <van-icon name="search" size="18" />
+        </template>
+      </van-nav-bar>
+
+      <div id="main">
+        <van-list v-for="(p,index) in products">
+          <template>
+            <van-card
+              :key="p.id"
+              :num="p.qty"
+              :tag="p.price < 500 ? '低价':'高价'"
+              :price="p.price"
+              :desc="p.description"
+              :title="p.title"
+              :thumb="'../lib/images/'+p.id+'.gif'"
+              :origin-price="p.oPrice"
+            />
+          </template>
+        </van-list>
+      </div>
+
+      <van-tabbar v-model="active" :fixed="true">
+        <van-tabbar-item icon="wap-home-o"><span>首页</span></van-tabbar-item>
+        <van-tabbar-item icon="apps-o">分类</van-tabbar-item>
+        <van-tabbar-item icon="bullhorn-o">发现</van-tabbar-item>
+        <van-tabbar-item icon="shopping-cart-o">购物车</van-tabbar-item>
+        <van-tabbar-item icon="contact">我的</van-tabbar-item>
+      </van-tabbar>
+    </div>
+
+    <script>
+      let vm = new Vue({
+        el: '#app',
+        data() {
+          return { active: 0, products: [] }
+        },
+        created() {
+          this.getProductList()
+        },
+
+        methods: {
+          getProductList() {
+            var that = this
+            $.getJSON('http://localhost:8080/exam_be/product/list', function (data) {
+              //不能用this，这里的this指的不是vm对象，
+              //下面的that可以换成vm变量，这样就不用管this指向问题了
+              //lambda表达式也是可以的
+              that.products = data
+
+              that.products.forEach((item, index) => {
+                item.oPrice = (item.price * (1 + Math.random())).toFixed(2)
+              })
+              console.log(that.products)
+            })
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

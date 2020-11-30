@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function gaojie(m) {
+        console.log(m)
+      }
+
+      function dijie() {
+        // console.log('dijie')
+        return 100
+      }
+      // gaojie(5)
+      // gaojie(dijie)
+      // gaojie(dijie())
+
+      function p() {
+        return 100
+      }
+      let result = p()
+      // console.log(result)
+
+      function p2() {
+        return function () {
+          return 100
+        }
+      }
+      let result2 = p2()()
+      console.log(result2)
+
+      let fun = p2()
+      let result3 = fun()
+    </script>
+  </body>
+</html>

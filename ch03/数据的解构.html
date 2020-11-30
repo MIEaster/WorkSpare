@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = ['a', 'b', 'c', 'd']
+      // //原始的取出数组的值，并赋值给变量
+      // let a1 = arr[0]
+      // let a2 = arr[1]
+      // let a3 = arr[2]
+      // let a4 = arr[3]
+      // //这种就称之为解构赋值，一次性赋值给4个变量
+      // let [a, b, c, d] = arr
+      // console.log(a, b, c, d)
+
+      // let [x, y] = arr
+      // console.log(x, y)
+
+      // function f() {
+      //   return [100, 200]
+      // }
+      // let [m, n] = f()
+      // console.log(m, n)
+
+      let arr3 = [1, 2, [100, 200]]
+      // let [a, b, c, d] = arr3
+      // console.log(a)
+      // console.log(b)
+      // console.log(c)
+      // console.log(d)
+
+      let [a, b, [c, d]] = arr3
+      console.log(a, b, c, d)
+    </script>
+  </body>
+</html>

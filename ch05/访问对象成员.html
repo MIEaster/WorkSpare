@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let obj = { name: 'abc', 0: 'def', 'a b': 100 }
+
+      //访问对象的成员方法一：用点号
+      //o.name
+      //像数字和空格的特殊是不能用点访问的。
+
+      //方法二：用中括号
+      //obj[0]
+      //obj["a b"]
+
+      //方法三：表达式 （ES的新的语法，以前是不支持表达式写法
+      let x = 'a'
+      console.log(obj[x + ' b']) //输出100
+    </script>
+  </body>
+</html>

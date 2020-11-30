@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p>asdfasdfasdfasdf</p>
+    <div>div div</div>
+    <script>
+      //this的值是运行是决定的，不是声明的时候决定
+      function Person(x) {
+        this.name = x
+        console.log('person内this：', this)
+      }
+
+      Person('def') // ====》window.Person("def")
+      let p1 = new Person('abc')
+
+      //第二个案例
+      var prop = 100
+      const test = {
+        prop: 42,
+        func: function () {
+          return this.prop
+        },
+      }
+      //console.log(test.func()) //输出42
+
+      let f = test.func
+
+      console.log('xxx:', f()) //====>  console.log(window.f())
+
+      //理解的技巧：方法是属于对象的，方法被调用，一定是有一个对象点出来.
+      //那么函数内部的this的值就是点号左边的对象
+    </script>
+
+    <script>
+      let p = document.querySelector('p')
+      p.addEventListener('click', function () {
+        console.log(this)
+      })
+    </script>
+  </body>
+</html>

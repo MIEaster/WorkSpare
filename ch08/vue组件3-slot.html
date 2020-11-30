@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue实例</title>
+  </head>
+  <body>
+    <div id="app">
+      <slot-demo><b>H</b>okok</slot-demo>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+      Vue.component('slot-demo', {
+        template: `
+        <div>
+          <h3>标题</h3>
+          <slot></slot>
+
+          <input type="button" value='Ok'/>
+        </div>
+        `,
+      })
+
+      new Vue({
+        el: '#app',
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let userService = (function () {
+        let cached = new Map()
+
+        return {
+          getById: function (id) {
+            if (cached.has(id)) {
+              console.log('查快速的东西')
+              return cached.get(id)
+            } else {
+              //查数据库
+              console.log('查慢速的东西')
+              let value = Math.random()
+              cached.set(id, value)
+              return value
+            }
+          },
+        }
+      })()
+
+      let result = userService.getById(100)
+      console.log('1:', result)
+
+      let result2 = userService.getById(100)
+      console.log('2:', result2)
+
+      let result3 = userService.getById(200)
+      console.log('1:', result3)
+    </script>
+  </body>
+</html>

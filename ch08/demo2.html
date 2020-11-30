@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="name">
+    <input type="text" v-model="unitprice">
+    <input type="text" v-model="qty">
+    <span>价格：{{total}}</span>
+    <span>{{calc}}</span>
+  </div>
+  <script src="../lib/vue.js"></script>
+  <script>
+    let vm=new Vue({
+      el:'#app',
+      data:{
+        name:"abc",
+        unitprice:0,
+        qty:0,
+      },
+      methods:{
+        calc:function(){
+          console.log('total-----')
+          return this.qty*this.unitprice
+        },
+      },
+    })
+  </script>
+</body>
+</html>

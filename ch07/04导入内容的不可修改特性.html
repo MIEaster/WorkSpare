@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="module">
+      import { i, j, sum, o } from './02.js'
+      //导入的内容相当于用const声明，如果是基本类型就不能修改值
+      //如果是引用类型，不能修改其引用，但可以改成员数据
+      //i = 1000
+      o.age = 22 // 可以改引用对象的成员数据
+      console.log(o.age)
+      o = { age: 18 } //不能改引用
+    </script>
+  </body>
+</html>

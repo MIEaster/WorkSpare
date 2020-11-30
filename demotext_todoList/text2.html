@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <shop-button chushizhi="100"></shop-button>
+        <shop-button chushizhi="0"></shop-button>
+        <shop-button chushizhi="0"> </shop-button>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script>
+        let myFristComponent = {
+            props: ["chushizhi"],
+            data: function () {
+                return {
+                    count: this.chushizhi,
+                };
+            },
+            template: `
+            <div>
+            <input type="text" v-model="count"/>
+            <input type="text" value="+" @click="count++"/>            
+            </div>
+            `,
+        };
+        Vue.Component("shop-button", myFristComponent);
+        new Vue({
+            el: "#app",
+        });
+    </script>
+</body>
+
+</html>

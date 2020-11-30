@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+  /*---------------------------------------------  unshift-------*/
+// const array1 = [1, 2, 3];
+//     console.log(array1.unshift(4, 5));
+//     console.log(array1);
+
+// arr = [4,5,6]; // 重置数组
+// arr.unshift(1);
+// arr.unshift(2);
+// arr.unshift(3);
+// console.log(arr); 
+
+/*-------------------------------------------------  shift-------*/
+// const array1 = [1, 2, 3];
+// const firstElement = array1.shift();
+
+// console.log(array1);
+// console.log(firstElement);
+
+// let myFish = ['angel', 'clown', 'mandarin', 'surgeon'];
+//  console.log('调用之前: ' + myFish);
+// var shifted = myFish.shift(); 
+//  console.log('调用之后: ' + myFish); 
+//  console.log('被删除的元素: ' + shifted); 
+
+/*-------------------------------------------------  includes-------*/
+// const array1 = [1, 2, 3];
+//  console.log(array1.includes(2));
+
+// const pets = ['cat', 'dog', 'bat'];
+
+// console.log(pets.includes('cat'));
+// console.log(pets.includes('at'));
+
+// //如果 fromIndex 为负值，计算出的索引将作为开始搜索searchElement的位置。如果计算出的索引小于 0，则整个数组都会被搜索。
+// var arr = ['a', 'b', 'c'];
+
+// arr.includes('a', -100); // true
+// arr.includes('b', -100); // true
+// arr.includes('c', -100); // true
+// arr.includes('a', -2); // false
+
+/*-------------------------------------------------  slice-------*/
+// //slice()方法返回一个新的 ArrayBuffer ，它的内容是这个ArrayBuffer的字节副本，从begin（包括），到end（不包括）。
+// const buffer = new ArrayBuffer(16);
+// const int32View = new Int32Array(buffer)
+
+// int32View[1] = 42;
+//  const sliced = new Int32Array(buffer.slice(4, 12))
+//  console.log(sliced[0]);
+  //复制一个 ArrayBuffer
+// var buf1 = new ArrayBuffer(8);
+// var buf2 = buf1.slice(0);
+
+/*-------------------------------------------------  splice-------*/
+//通过删除或替换现有元素或者原地添加新的元素来修改数组,并以数组形式返回被修改的内容。此方法会改变原数组。
+// const months = ['a', 'b', 'c', 'd'];
+// months.splice(1, 0, 'd');
+// console.log(months);
+
+// months.splice(4, 1, 'May');
+// console.log(months);
+
+// var myFish = ["angel", "clown", "mandarin", "sturgeon"];
+// var removed = myFish.splice(2, 0, "drum");
+
+// 运算后的 myFish: ["angel", "clown", "drum", "mandarin", "sturgeon"]
+// 被删除的元素: [], 没有元素被删除
+
+/*-------------------------------------------------  find-------*/
+//方法返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined
+// const array1 = [5, 12, 8, 130, 44];
+// const found = array1.find(element => element > 10);
+// console.log(found);
+
+// var inventory = [
+//     {name: 'apples', quantity: 2},
+//     {name: 'bananas', quantity: 0},
+//     {name: 'cherries', quantity: 5}
+// ];
+
+// function findCherries(fruit) { 
+//     return fruit.name === 'cherries';
+// }
+
+// console.log(inventory.find(findCherries));
+
+/*-------------------------------------------------  findIndex -------*/
+//方法返回数组中满足提供的测试函数的第一个元素的索引。若没有找到对应元素则返回-1。
+// const array1 = [5, 12, 8, 130, 44];
+
+// const isLargeNumber = (element) => element > 13;
+
+// console.log(array1.findIndex(isLargeNumber));
+
+/*-------------------------------------------------  some -------*/
+//方法测试数组中是不是至少有1个元素通过了被提供的函数测试。它返回的是一个Boolean类型的值。
+
+//注意：如果用一个空数组进行测试，在任何情况下它返回的都是false。
+const array = [1, 2, 3, 4, 5]; 
+const even = (element) => element % 2 === 0;
+console.log(array.some(even));
+
+
+
+
+  </script>
+</body>
+</html>

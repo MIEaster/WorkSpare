@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //构造器（constructor）指的是对象的创建者
+      //找到亚当夏娃的创造者也就是上帝
+
+      function Person() {}
+      let p1 = new Person()
+      //输出的就是Person函数
+      console.log(p1.constructor)
+
+      let o1 = {}
+      //输出的就是Object
+      console.log(o1.constructor)
+
+      console.log(o1.constructor === Object)
+      console.log(p1.constructor === Person)
+      //constructor是一个指代Object函数的东西，
+      //所以（）这样调用的时候就是创建了一个对象
+      let o2 = o1.constructor()
+      //因为o1与o2都是构造器Object创建出来的，所以下面的等式就成立
+      console.log(o2.constructor === o1.constructor)
+    </script>
+  </body>
+</html>

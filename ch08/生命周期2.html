@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>vue2生命周期</title>
+  </head>
+  <body>
+    <div id="app1"><input v-model="msg" /> {{msg}}</div>
+    <button type="button" onclick="destroy()">销毁</button>
+    <script src="../lib/vue.js"></script>
+    <script type="text/javascript">
+      //格式化输出
+      console.log(
+        '示例：%c%s',
+        'background:red;color:#fff',
+        'vue生命周期',
+        '开始了'
+      )
+
+      var app1 = new Vue({
+        el: '#app1',
+        data: {
+          msg: 'vue',
+        },
+        beforeCreate: function () {
+          //this.msg === undefined，因为vue还没有对其完成响应式的处理，此时不能访问
+          console.log('创建前：' + this.msg)
+        },
+        created: function () {
+          //created只是完成了数据的双向处理，挂载的事情还没有做，所以$el还没有解析编译完成
+          console.log('创建后：' + this.msg + ',' + this.$el)
+        },
+        beforeMount: function () {
+          //挂载前$el可以访问，但其innerHTML就是我们写的内容，也就是说还没有编译处理
+          console.log('挂载前：')
+          console.log(this.$el.innerHTML)
+        },
+        mounted: function () {
+          //解析完毕v-model之类的东西，所以下面输出vue
+          console.log('挂载后：')
+          console.log(this.$el.innerHTML)
+        },
+        beforeUpdate: function () {
+          console.log('虚拟DOM（视图）更新前：')
+          console.log(JSON.stringify(this.msg))
+          console.log(this.$el.innerHTML)
+        },
+        updated: function () {
+          console.log('虚拟DOM（视图）更新后：')
+          console.log(JSON.stringify(this.msg))
+          console.log(this.$el.innerHTML)
+        },
+        beforeDestroy: function () {
+          console.log('实例销毁前：')
+          console.log(this.msg)
+        },
+        destroyed: function () {
+          console.log('实例销毁后：')
+          console.log(this.msg)
+        },
+      })
+
+      function destroy() {
+        app1.$destroy()
+      }
+    </script>
+  </body>
+</html>

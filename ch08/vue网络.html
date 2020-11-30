@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .tianqi {
+        float: left;
+        margin: 10px;
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="city" />
+      <input type="button" value="搜索" @click="search" />
+
+      <div id="result">
+        <div v-for=" item in result" :key="item.date" class="tianqi">
+          <div>{{item.date}}</div>
+          <div>{{item.low}}</div>
+          <div>{{item.high}}</div>
+          <div>{{item.type}}</div>
+        </div>
+      </div>
+    </div>
+    <script src="../lib/vue.js"></script>
+    <script src="../lib/jquery.js"></script>
+
+    <script>
+      let vm = new Vue({
+        el: '#app',
+        data: {
+          city: '珠海',
+          result: [],
+        },
+        methods: {
+          search: function () {
+            let that = this //所以这里需要先用一个变量保存住vue实例
+            // let url = 'http://wthrcdn.etouch.cn/weather_mini?city=' + this.city
+
+            $.getJSON(url, function (res) {
+              //this.result 是访问不到上面定义的result变量的，
+              //因为这个函数中的this不是指向vue实例
+              that.result = res.data.forecast
+              console.log(that.result)
+            })
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

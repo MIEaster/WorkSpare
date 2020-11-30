@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //创建Map集合
+      let data = new Map()
+      //键和值都可以是任何类型的数据
+      data.set(100, 'abc')
+      data.set(200, 'def')
+
+      // console.log(data.size)
+      let result = data.get(100)
+      // console.log(result)
+
+      //依据键来查找map中是否有此值
+      let have = data.has(200)
+      //console.log(have)
+
+      for (let item of data) {
+        //每一个条目是一个数组，固定索引0是键值，索引1是value值
+        // console.log(item[0], item[1])
+      }
+
+      //可以把一个二维的2个元素的数组转换为一个map
+
+      let arr = [
+        [300, 'xxx'],
+        [400, 'yyy'],
+        [500, 'zzz'],
+      ]
+
+      let data2 = new Map(arr)
+      // console.log(data2.get(400))
+      // console.log(data2.size) //3
+
+      for (let k of data.keys()) {
+        console.log(k)
+      }
+
+      for (let v of data.values()) {
+        console.log(v)
+      }
+
+      for (let entry of data.entries()) {
+        console.log(entry[0], entry[1])
+      }
+    </script>
+  </body>
+</html>

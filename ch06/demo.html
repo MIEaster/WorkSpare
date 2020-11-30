@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    ///-----------------------------------------
+    // const target ={a:1,b:2}
+    // const source = {
+    //   b:4,
+    //   c:5,
+    //   e:function(){
+    //     console.log(this.a)
+    //   },
+    // }
+
+    // const returnedTarget = Object.assign(target,source)
+    // console.log(target)
+    // target.e()
+    ///------------------------------------------------
+
+    // function Parent(name, age) {
+    //   this.name = name
+    //   this.age = age
+    // }
+
+    // function child(name, age) {
+    //   Parent.call(this, name, age)
+    //   this.c1 = 'c1'
+    // }
+
+    // function child2(name, age) {
+    //   Parent.apply(this, [name, age])
+    //   this.c2 = 'c2'
+    // }
+    // let c1 = new child('aaa',18)
+    // let c2 = new child2('bbb',19)
+    // console.log(c1)
+    // console.log(c2)
+    ///---------------------------------------------------
+
+    // function Person(name) {
+    //   this.name = name
+    // }
+    // let p1 = new Person('a')
+    // let p2 = new Person('b')
+    // Person.prototype.age = 18
+    // console.log(p1.age)
+    // console.log(p2.age)
+    // console.log(Person.prototype)
+    // console.log(Person.prototype.constructor === Person)
+    // console.log(p1._proto_)
+    // console.log(p1._proto_ === Person.prototype)
+    // console.log(p2._proto_ === Person.prototype)
+
+    // p1.name ='aaaa'
+    // console.log(p1.name)
+    // console.log(p2.name)
+    ///---------------------------------------------------
+    // let p = {
+    //   age: 18
+    // }
+    // let c = Object.create(p)
+    // console.log(c)
+    // console.log(c.__protr__ === p)
+    // console.log(c.constructor === Object)
+    ///---------------------------------------------------
+    // function Student(){}
+    // let s1 = new Student()
+    // console.log(s1 instanceof Student)
+    // console.log(s1 instanceof Object)
+    // console.log(s1 instanceof Student.prototype.__proto__.constructor)
+    ///---------------------------------------------------
+    //    function add() {
+    //      if (arguments.length < 2) {
+    //        throw new Error('参数不能小鱼')
+    //      }
+    //      let result = 0
+    //      for (let i = 0; i < arguments.length; i++) {
+    //        result += arguments[i]
+    //      }
+    //      return result
+    //    }
+    //    console.log(add(1, 2))
+    //    console.log(add(1, 2, 3))
+    //    console.log(add(1, 2, 3, 4))
+    //	  function add2(...params){
+    //		  if(params.length<2){
+    //			  throw new Error('参数不能小于2')
+    //		  }
+    //		  let result = 0
+    //
+    //		  for(let i =0;i<params.length;i++){
+    //			  result+= params[i]
+    //		  }
+    //		  return result
+    //	  }
+    //	  console.log(add(1,2))
+    //	  console.log(add(1,2,3))
+    //	  console.log(add(1,2,3,4))
+    ///---------------------------------------------------
+    //function Person(name){
+    //		  this.name = name
+    //	  }
+    //	  Person.prototype.work = function(){
+    //		  console.log(this.name+'work')
+    //	  }
+    //	  let p1 = new Person('cym')
+    //	  p1.work = newfun(){
+    //		  console.log('zkxs')
+    //	  }	  
+    //	  p1.work()
+    ///---------------------------------------------------
+    //let o = {
+    //      age: 18
+    //    }
+    //
+    //    function Person() {}
+    //    let p1 = new Person()
+    //    let result = Object.getPrototypeOf(p1)
+    //    console.log(result)
+    //    console.log(result === Person.prototype)
+    //    Object.setPrototypeOf(p1, o)
+    //    console.log(p1.__proto__ === o)
+    //    console.log(Object.getPrototypeOf(p1) === o)
+
+    class Person {
+      work(){
+        console.log('111')
+
+      }
+      static Xxx(){
+        console.log('父类的静态方法')
+      }
+    }
+    class Student extends Person{
+      constructor(){
+        super()
+      }
+      mywork(){
+        super.work()
+        console.log('working')
+      }
+    }
+    let s1 = new Student()
+    console.log(s1 instanceof Person)
+    console.log(s1 instanceof Student)
+  </script>
+</body>
+
+</html>

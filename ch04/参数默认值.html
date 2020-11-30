@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function f(m, n) {
+        n = n || -1
+      }
+
+      //1.总原则：如果要设定函数参数的默认值，这些参数都应该放在函数的最后
+      // 参数的值，如果调用的时候有传值，就以传递的值为准，没有传值才用默认值
+      function add(m, x = 1, y = 2) {
+        return m + x + y
+      }
+      console.log(add()) //undefined+ 3 ===NaN
+      console.log(add(100)) //103
+      console.log(add(100, 200)) //302
+      console.log(add(100, 200, 300)) //600
+      console.log(add(100, 200, 300, 400)) //600 ,400被忽略
+
+      function add2(x = 1, y = x) {
+        return x + y
+      }
+      //2.参数的默认值得处理是在函数被调用的时候（运行）处理的
+      console.log(add2(100)) //200
+
+      function add3(
+        x,
+        y = (function () {
+          console.log('xxx')
+          return 1000
+        })()
+      ) {
+        return x + y
+      }
+
+      console.log(add3(100))[({}, {}, {}, {}, {})]
+      function processData(data, pagenum = 1, pagesize = 2) {}
+    </script>
+  </body>
+</html>

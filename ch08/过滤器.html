@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style></style>
+  </head>
+  <body>
+    <div id="app">
+      {{msg | houzhui}}
+
+      <br />
+      <span>{{msg | qianzhui}}</span><br />
+      <span>{{msg | qianzhui |houzhui}}</span>
+      <br />
+      <span>{{msg | houzhui |qianzhui}}</span><br />
+      <span>{{msg | houzhui |qianzhui | daxie}}</span><br />
+      <span>{{msg | houzhui |qianzhui | daxie(100)}}</span><br />
+      <span>{{d | format('yyyy-MM-dd hh-mm-ss')}}</span>
+    </div>
+    <hr />
+    <div id="app2">{{msg2 | houzhui}}</div>
+    <script src="../lib/vue.js"></script>
+    <script src="./myfilter.js"></script>
+    <script>
+      //第一个参数是过滤器的名字，第二个参数是一个函数就是过滤器行为体
+      //Vue.filter是一个全局过滤器，所有的vue实例都可以使用此过滤器
+      Vue.filter('houzhui', function (val) {
+        console.log('----', val)
+        return val + ':houzhui'
+      })
+
+      Vue.filter('format', function (val, fmt) {
+        var o = {
+          'M+': val.getMonth() + 1, //月份
+          'd+': val.getDate(), //日
+          'h+': val.getHours(), //小时
+          'm+': val.getMinutes(), //分
+          's+': val.getSeconds(), //秒
+          'q+': Math.floor((val.getMonth() + 3) / 3), //季度
+          S: val.getMilliseconds(), //毫秒
+        }
+        if (/(y+)/.test(fmt))
+          fmt = fmt.replace(
+            RegExp.$1,
+            (val.getFullYear() + '').substr(4 - RegExp.$1.length)
+          )
+        for (var k in o)
+          if (new RegExp('(' + k + ')').test(fmt))
+            fmt = fmt.replace(
+              RegExp.$1,
+              RegExp.$1.length == 1
+                ? o[k]
+                : ('00' + o[k]).substr(('' + o[k]).length)
+            )
+        return fmt
+      })
+      let vm = new Vue({
+        el: '#app',
+        data: { msg: 'hello filter', d: new Date() },
+        //此过滤器只是一个局部过滤器
+        filters: {
+          qianzhui: function (val) {
+            return 'qianzhu:' + val
+          },
+        },
+      })
+
+      //第二个Vue实例，用来阐述全局过滤器的全局特性
+      new Vue({
+        el: '#app2',
+        data: { msg2: '222' },
+      })
+    </script>
+  </body>
+</html>

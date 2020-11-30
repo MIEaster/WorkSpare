@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+<script>
+    /*---------------------------模板字符串--------------------------------*/
+    /*
+    function f1(){
+      return 100
+    }
+    var s0 = 'xxx'
+    var s1 = 'abc' + s0 + 'def'
+
+    var s2  = `abc${s0} def`
+    var s3  = `abc ${1+2} def`
+    console.log(s3)
+
+    var s4 = `abc${f1()}def`
+    console.log(s4)
+
+    var s100 =` LIULU
+    LoVe
+    `
+    console.log(s2)
+    console.log(s100)
+    */
+/*-------------------------------符号类型----------------------------------*/
+/*
+    var o = {}
+    o.a = '100'
+    o.a = true
+
+    console.log(o.a)
+
+    function f1(gender){
+      if(gender == 'male'){
+      }else if(gender == 'female'){
+
+      }
+    }
+
+    f1('males')
+
+    var s1 = Symbol('miaoshu')
+    var s2 = Symbol('maioshu')
+    console.log(s1)
+    console.log(s1 === s2)
+
+    o[s1] = 'abc'
+    o[s2] = 'def'
+    console.log(o[s1])
+    console.log(o[s2])
+
+    var s3 = Symbol.for('LIULU')
+    o[s3] = 200
+    console.log(o[s3])
+
+    var s4 = Symbol.for('LIULU')
+    console.log([s4])
+
+    var result = Symbol.keyFor(s3)
+    console.log(result)
+
+    var gender = {
+      male :Symbol.for('male'),
+      female:Symbol.for('female'),
+    }
+
+    function f2(g){
+      if(g == gender.male){
+        console.log('LIULU * love')
+      }
+    }
+
+f2(gender.male)
+*/
+/*-------------------------------短路特性----------------------------------*/
+/*
+var a = true
+
+function f (){
+  console.log('ai shang LIULU')
+  return true
+}
+
+var b=  f() || a
+console.log(b)
+
+var c= a&& f()
+*/
+/*-------------------------------默认值----------------------------------*/
+/*
+function add(m,n){
+  m = m || 20
+  n = n || 20
+  return m+n
+}
+add()
+*/
+/*-------------------------------默认值----------------------------------*/
+/*var str  = "a"
+
+console .log(!!str)
+*/
+/*-------------------------------严格模式----------------------------------*/
+/*
+"use strict"
+var a = 100
+var a = 'abcdef'
+console.log(a)
+*/
+
+
+
+</script>
+
+<input type="button" value="srcollIntView" id="btnSrcoll"/>
+<p id="a" class="box bold myclass">aaa</p>
+<p id="b" class="box" aaa="100" data-age="18" data-name="LIULU">qqq22</p>
+<div style="height: 300px;"></div>
+<span id="abc">这是span</span>
+<script>
+
+  var result = document.querySelector('p')
+  console.log(result)
+  console.log(result.length)
+</script>
+</body>
+</html>

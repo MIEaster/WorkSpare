@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <span v-show="true">1</span>
+    <span v-show ="false">2</span>
+    <span v_show="isShow">3</span>
+<p>------------------------------------------------</p>
+    <span v-if="true">aaa</span>
+    <span v-if="false">bbb</span>
+    <span v-if="isShow">ccc</span>
+<p>------------------------------------------------</p>
+    <span v-if="score>=90">优秀</span>
+    <span v-else_if="score>=70">良好</span>
+    <span v-else-if="score>=60">及格</span>
+    <span v-else>不及格</span>
+<p>------------------------------------------------</p>
+    <input type="text" v-bind:value="banji"/>
+    <input type="text" v-bind:name="banji"/>
+    <img :src="imageUrl"/>
+  </div>
+
+  <script src="../lib/vue.js"></script>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        isShow: false,
+        score:70,
+        banji:'164ban',
+        imageUrl:'../images/1.jpg',
+      },
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="number" class="num" value="12" />
+    dengji:
+    <p></p>
+
+    <script>
+      let numInput = document.querySelector('.num')
+      numInput.addEventListener('change', function () {
+        let num = numInput.value
+        console.log(typeof num)
+
+        let dengji = 0
+
+        if (num > 20) {
+          dengji = 5
+        } else if (num > 15) {
+          dengji = 4
+        } else if (num > 10) {
+          dengji = 3
+        } else if (num > 5) {
+          dengji = 2
+        } else if (num > 0) {
+          dengji = 1
+        } else {
+          dengji = 0
+        }
+
+        // console.log(dengji)
+        let shi = '★'
+        let xu = '☆'
+
+        let p = document.querySelector('p')
+        let result = ''
+        for (let i = 1; i <= 5; i++) {
+          if (i <= dengji) {
+            result += shi
+          } else {
+            result += xu
+          }
+        }
+        p.innerHTML = result
+      })
+    </script>
+  </body>
+</html>

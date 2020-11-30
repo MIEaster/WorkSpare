@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <a href="http://www.baidu.com" target="_blank" @click="handle($event)"
+        >百度</a
+      >
+
+      <a href="http://www.baidu.com" target="_blank" @click.prevent="handle2()"
+        >百度2</a
+      >
+
+      <input type="text" @keyup.enter="process" />
+      <input type="text" @keyup.13="process" />
+    </div>
+
+    <script src="../lib/vue.js"></script>
+
+    <script>
+      let vm = new Vue({
+        el: '#app',
+        data: {},
+        methods: {
+          handle: function (e) {
+            e.preventDefault()
+
+            alert('dan ji l')
+          },
+          handle2: function () {
+            alert('dan ji 2')
+          },
+          process: function () {
+            alert('按键事件')
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <p :style="{fontSize:a}">111</p>
+    <p :style="abc">22</p>
+    <p :style="[x,y]">33</p>
+  </div>
+  
+
+  <script src="../lib/vue.js"></script>
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        a: '18px',
+        abc: {
+          fontSize: '18px',
+          color: 'red',
+        },
+        x: {
+          fontSize: '18px',
+        },
+        y: {
+          color: 'red',
+          border: '1px solid green',
+        },
+      },
+    })
+  </script>
+</body>
+</html>

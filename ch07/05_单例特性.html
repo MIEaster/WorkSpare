@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="module">
+      //这里虽然看上去是导入了2次，但其实只会让02.js导入一次
+      import { i } from './02.js'
+      import { j } from './02.js'
+    </script>
+  </body>
+</html>

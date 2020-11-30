@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    function Student(){}
+
+    Student.prototype.xuehao = false
+    Object.defineProperty(Student.prototype,"shengri",{
+      enumerable:false
+    })
+    Student.prototype.print = function(){
+
+    }
+
+    let s1 = new Student();
+    for(let p in s1){
+      console.log(p,s1[p]);
+    }
+
+  </script>
+</body>
+</html>
